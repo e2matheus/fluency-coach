@@ -1,4 +1,4 @@
-import React from 'react';
+import './App.css';
 import PracticeScreen from './components/PracticeScreen';
 
 function App() {

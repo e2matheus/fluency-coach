@@ -40,3 +40,153 @@
 .read-the-docs {
   color: #888;
 }
+
+.app-container {
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    padding: 40px;
+}
+
+.practice-container {
+    max-width: 1280px;
+    margin: 50px auto;
+    padding: 40px;
+    background-color: #2d2d2d;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.top-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.top-controls button {
+    padding: 8px;
+    border: none;
+    background: #363636;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.top-controls button:hover {
+    background-color: #404040;
+}
+
+.content {
+    margin: 20px 0;
+}
+
+.sentence-row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.english-text, .spanish-text {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.play-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    transition: transform 0.2s;
+}
+
+.play-button:hover {
+    transform: scale(1.1);
+}
+
+.phase-controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.phase-controls button {
+    padding: 8px 16px;
+    border: 1px solid #4a4a4a;
+    background: #363636;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.phase-controls button:hover {
+    background-color: #4a4a4a;
+    border-color: #5a5a5a;
+}
+
+.phase-controls button.active {
+    background-color: #4CAF50;
+    border-color: #45a049;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    background: #363636;
+    border-radius: 8px;
+    margin: 40px 0;
+}
+
+.empty-state p {
+    margin: 10px 0;
+    color: #e0e0e0;
+}
+
+.create-story-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.create-story-btn:hover {
+    background: #45a049;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Reset default margins and set dark background */
+body {
+    margin: 50px;  /* Exact 50px margin as shown in DevTools */
+    padding: 0;
+    background-color: #1e1e1e;
+    color: white;
+    min-width: 320px;
+    min-height: 100vh;
+}
+
+.app-container {
+    min-height: 100vh;
+}
+
+.practice-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #2d2d2d;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
