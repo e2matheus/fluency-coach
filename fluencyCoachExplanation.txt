@@ -1,0 +1,39 @@
+
+# Fluency Coach
+
+Esta aplicación ayuda a los usuarios a mejorar su pronunciación con palabras en inglés.
+
+Tiene 1 sola pantalla, la Pantalla de Práctica.
+
+Inicialmente, como no hay historias qué cargar, le pide al usuario si desea crear una historia.
+
+Si el usuario decide avanzar, se genera una historia de 1 o 2 oraciones, tanto en inglés como en español, que tenga tanto texto como audio.
+
+Como la idea es practicar pronunciación y entonación, la aplicación coloca un botón a la derecha de cada oración para que el usuario pueda escuchar cómo se pronuncia.
+
+Se reconoce internamente que la clave está en la repetición y en la constancia en estructuras gramaticales comunes.
+
+Una vez se crea una historia, la práctica tiene 3 fases:
+
+Fase #1
+Permitir que el usuario escuche y lea la historia a la vez, muchas veces, leyendo el texto en inglés y comparando con la traducción en español.
+
+Paso #2
+Quitar la traducción en español, y sigue escuchando y leyendo la historia, solo con el texto en inglés.
+
+Paso #3
+Al entender la historia, escuchar el mismo texto, pero sin leer, ni el texto en inglés.
+
+Es por eso que la Pantalla de Práctica tiene diferentes botones, con íconos:
+
+* Botón para crear una nueva historia: la nueva historia debe cumplir las mismas condiciones que se mencionaron arriba.
+
+* Botón para guardar la historia: registra el estado de la historia, incluyendo la fase actual, en alguna parte del sistema.
+
+* Botón para seleccionar una historia que se creó anteriormente: muestra un modal que muestra la lista de historias, botones para cancelar el proceso, y un botón para abrir la historia seleccionada.
+
+* Botón para escuchar la oración, ya sea en inglés o en español.
+
+* Botón de ayuda: muestra un modal que explica cómo funciona la aplicación, y los pasos que se recomiendan seguir para mejorar la pronunciación.
+
+* Botón para cada fase: dependiendo de la fase que se elija, se mostrarán más o menos botones en la pantalla.

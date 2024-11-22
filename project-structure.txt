@@ -1,0 +1,32 @@
+fluency-coach/
+├── client/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── PracticeScreen.jsx
+│   │   │   ├── AudioPlayer.jsx
+│   │   │   ├── StoryDisplay.jsx
+│   │   │   └── PhaseControls.jsx
+│   │   ├── services/
+│   │   │   └── api.js
+│   │   ├── hooks/
+│   │   │   └── useAudio.js
+│   │   ├── assets/
+│   │   │   └── icons/
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   ├── public/
+│   ├── package.json
+│   └── vite.config.js
+│
+└── server/
+    ├── models/
+    │   └── Story.js
+    ├── routes/
+    │   └── stories.js
+    ├── middleware/
+    │   └── errorHandler.js
+    ├── audio/
+    │   └── stories/
+    ├── index.js
+    ├── package.json
+    └── .env 
