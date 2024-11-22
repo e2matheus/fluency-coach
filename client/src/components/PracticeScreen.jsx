@@ -1,10 +1,41 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const PracticeScreen = () => {
     const [phase, setPhase] = useState(1);
     const [currentStory, setCurrentStory] = useState(null);
     const [showHelpModal, setShowHelpModal] = useState(false);
     const [showStoriesModal, setShowStoriesModal] = useState(false);
+    const [speechSupported, setSpeechSupported] = useState(false);
+
+    useEffect(() => {
+        // Check if speech synthesis is supported
+        if ('speechSynthesis' in window) {
+            setSpeechSupported(true);
+        } else {
+            console.warn('Speech synthesis not supported in this browser');
+        }
+    }, []);
+
+    const speak = (text, lang = 'en-US') => {
+        if (!speechSupported) {
+            console.warn('Speech synthesis not supported');
+            return;
+        }
+
+        try {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = lang;
+            utterance.rate = 0.9;
+
+            utterance.onerror = (event) => {
+                console.error('Speech synthesis error:', event);
+            };
+
+            window.speechSynthesis.speak(utterance);
+        } catch (error) {
+            console.error('Failed to speak:', error);
+        }
+    };
 
     const handleCreateStory = () => {
         const newStory = {
@@ -25,12 +56,29 @@ const PracticeScreen = () => {
         setCurrentStory(newStory);
     };
 
-    const handlePlayAudio = (index) => {
-        console.log(`Playing audio for sentence ${index + 1}`);
+    const handlePlayAudio = (index, isSpanish = false) => {
+        if (!currentStory?.sentences?.[index]) {
+            console.error('Invalid sentence index or no story loaded');
+            return;
+        }
+
+        const sentence = currentStory.sentences[index];
+        const text = isSpanish ? sentence.spanish : sentence.english;
+        const lang = isSpanish ? 'es-ES' : 'en-US';
+        speak(text, lang);
     };
 
     const handlePlayFullStory = () => {
-        console.log('Playing full story in English');
+        if (!currentStory?.sentences?.length) {
+            console.error('No story loaded');
+            return;
+        }
+
+        currentStory.sentences.forEach((sentence, index) => {
+            setTimeout(() => {
+                speak(sentence.english, 'en-US');
+            }, index * 3000);
+        });
     };
 
     const handleSaveStory = () => {
@@ -79,6 +127,12 @@ const PracticeScreen = () => {
                             <button onClick={handleCreateStory} className="create-story-btn">
                                 Create New Story
                             </button>
+                            {!speechSupported && (
+                                <p className="warning">
+                                    ⚠️ Speech synthesis is not supported in your browser.
+                                    Audio playback will not be available.
+                                </p>
+                            )}
                         </div>
                     ) : (
                         <div className="story-container">
@@ -93,6 +147,7 @@ const PracticeScreen = () => {
                                                     className="play-button"
                                                     onClick={() => handlePlayAudio(index)}
                                                     title="Play English audio"
+                                                    disabled={!speechSupported}
                                                 >
                                                     <span role="img" aria-label="play">▶️</span>
                                                 </button>
@@ -103,8 +158,9 @@ const PracticeScreen = () => {
                                                 <p>{sentence.spanish}</p>
                                                 <button
                                                     className="play-button"
-                                                    onClick={() => handlePlayAudio(index)}
+                                                    onClick={() => handlePlayAudio(index, true)}
                                                     title="Play Spanish audio"
+                                                    disabled={!speechSupported}
                                                 >
                                                     <span role="img" aria-label="play">▶️</span>
                                                 </button>
@@ -117,6 +173,7 @@ const PracticeScreen = () => {
                                         <button
                                             onClick={handlePlayFullStory}
                                             title="Play full story in English"
+                                            disabled={!speechSupported}
                                         >
                                             <span role="img" aria-label="play-all">🔊</span>
                                             Play Full Story
