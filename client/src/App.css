@@ -42,16 +42,20 @@
 }
 
 .app-container {
+    width: 750px;
     min-height: 100vh;
+    margin: 0 auto;
     background-image: url('/fluency-coach-background.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     padding: 20px;
+    position: relative;
 }
 
 .practice-container {
-    max-width: 800px;
+    width: 100%;
+    max-width: 700px;
     margin: 0 auto;
     padding: 20px;
     background-color: #2d2d2d;
