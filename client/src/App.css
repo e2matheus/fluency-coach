@@ -43,14 +43,17 @@
 
 .app-container {
     min-height: 100vh;
-    background-color: #f5f5f5;
-    padding: 40px;
+    background-image: url('/fluency-coach-background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 20px;
 }
 
 .practice-container {
-    max-width: 1280px;
-    margin: 50px auto;
-    padding: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
     background-color: #2d2d2d;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -170,23 +173,10 @@
 
 /* Reset default margins and set dark background */
 body {
-    margin: 50px;  /* Exact 50px margin as shown in DevTools */
+    margin: 50px;
     padding: 0;
     background-color: #1e1e1e;
     color: white;
     min-width: 320px;
     min-height: 100vh;
-}
-
-.app-container {
-    min-height: 100vh;
-}
-
-.practice-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 40px;
-    background-color: #2d2d2d;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
