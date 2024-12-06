@@ -178,3 +178,52 @@ Guidelines for contributing:
 ## License
 
 MIT License - See LICENSE file for details
+
+## OpenAI Text-to-Speech Integration
+
+The application uses OpenAI's TTS service for higher quality voice synthesis. To enable this feature:
+
+1. Get your OpenAI API key:
+   - Visit https://platform.openai.com
+   - Sign in or create an account
+   - Go to API Keys section (top-right menu)
+   - Click "Create new secret key"
+   - Copy the key immediately (you won't be able to see it again)
+
+2. Set up environment variables:
+   ```bash
+   # In the server directory
+   cp .env.example .env
+   ```
+
+3. Edit your `.env` file:
+   ```env
+   OPENAI_API_KEY=your-api-key-here
+   ENABLE_OPENAI_TTS=true
+   ```
+
+4. Restart your server for changes to take effect
+
+### Voice Selection
+- English text uses the 'nova' voice
+- Spanish text uses the 'alloy' voice
+
+### Fallback Behavior
+The application will automatically fall back to browser TTS if:
+- OpenAI API key is missing or invalid
+- OpenAI TTS is disabled in settings
+- Network errors occur
+- API rate limits are exceeded
+
+### Cost Considerations
+- OpenAI's TTS service is not free
+- Charges are based on character count
+- Monitor usage in your OpenAI dashboard
+- Set spending limits to avoid unexpected charges
+
+### Troubleshooting
+If you see the red warning banner:
+1. Check that your API key is correctly set in `.env`
+2. Verify `ENABLE_OPENAI_TTS=true` in `.env`
+3. Restart the server
+4. Clear browser cache and refresh
