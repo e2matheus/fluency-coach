@@ -160,14 +160,17 @@ const PracticeScreen = () => {
                         {currentStory && (
                             <>
                                 <button
+                                    className="feature-button"
                                     onClick={handleCreateStory}
                                     title="Create new story"
+                                    disabled
                                 >
                                     <span role="img" aria-label="create">✏️</span>
                                 </button>
                                 <button
                                     onClick={handleSaveStory}
                                     title="Save current story"
+                                    disabled
                                 >
                                     <span role="img" aria-label="save">💾</span>
                                 </button>
@@ -176,12 +179,14 @@ const PracticeScreen = () => {
                         <button
                             onClick={() => setShowStoriesModal(true)}
                             title="View saved stories"
+                            disabled
                         >
                             <span role="img" aria-label="stories">📚</span>
                         </button>
                         <button
                             onClick={() => setShowHelpModal(true)}
                             title="Show help"
+                            disabled
                         >
                             <span role="img" aria-label="help">❓</span>
                         </button>
