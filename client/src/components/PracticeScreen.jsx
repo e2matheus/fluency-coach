@@ -212,31 +212,37 @@ const PracticeScreen = () => {
                                 <h2>{currentStory.title}</h2>
                                 <div className="text-content">
                                     {phase <= 2 && currentStory.sentences.map((sentence, index) => (
-                                        <div key={index} className="sentence-row">
+                                        <div key={index} className="sentence-container">
                                             {phase <= 2 && (
                                                 <div className="english-text">
-                                                    <p>{sentence.english}</p>
-                                                    <button
-                                                        className="play-button"
-                                                        onClick={() => handlePlayAudio(index)}
-                                                        title="Play English audio"
-                                                        disabled={!speechSupported}
-                                                    >
-                                                        <span role="img" aria-label="play">▶️</span>
-                                                    </button>
+                                                    <span className="language-indicator">🇺🇸</span>
+                                                    <div className="sentence-content">
+                                                        <p>{sentence.english}</p>
+                                                        <button
+                                                            className="play-button"
+                                                            onClick={() => handlePlayAudio(index)}
+                                                            title="Play English audio"
+                                                            disabled={!speechSupported}
+                                                        >
+                                                            <span role="img" aria-label="play">▶️</span>
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             )}
                                             {phase === 1 && (
                                                 <div className="spanish-text">
-                                                    <p>{sentence.spanish}</p>
-                                                    <button
-                                                        className="play-button"
-                                                        onClick={() => handlePlayAudio(index, true)}
-                                                        title="Play Spanish audio"
-                                                        disabled={!speechSupported}
-                                                    >
-                                                        <span role="img" aria-label="play">▶️</span>
-                                                    </button>
+                                                    <span className="language-indicator">🇪🇸</span>
+                                                    <div className="sentence-content">
+                                                        <p>{sentence.spanish}</p>
+                                                        <button
+                                                            className="play-button"
+                                                            onClick={() => handlePlayAudio(index, true)}
+                                                            title="Play Spanish audio"
+                                                            disabled={!speechSupported}
+                                                        >
+                                                            <span role="img" aria-label="play">▶️</span>
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             )}
                                         </div>
