@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import TranslatableText from './TranslatableText';
+import { getTranslations } from '../services/translationService';
 
 const PracticeScreen = () => {
     const [phase, setPhase] = useState(1);
@@ -7,6 +9,13 @@ const PracticeScreen = () => {
     const [showStoriesModal, setShowStoriesModal] = useState(false);
     const [speechSupported, setSpeechSupported] = useState(false);
     const [ttsStatus, setTtsStatus] = useState({ enabled: false, message: '' });
+    const [translations, setTranslations] = useState({});
+
+    // const translations = {
+    //     "hello": "hola",
+    //     "world": "mundo",
+    //     // Add more translations as needed
+    // };
 
     useEffect(() => {
         // Check if speech synthesis is supported
@@ -39,6 +48,23 @@ const PracticeScreen = () => {
                 });
             });
     }, []);
+
+    useEffect(() => {
+        // Load initial translations for the current story
+        const loadTranslations = async () => {
+            if (currentStory) {
+                const words = currentStory.sentences
+                    .map(s => s.english.split(/\s+/))
+                    .flat()
+                    .map(w => w.toLowerCase());
+                
+                const translationsData = await getTranslations(words);
+                setTranslations(translationsData);
+            }
+        };
+
+        loadTranslations();
+    }, [currentStory]);
 
     const speak = async (text, lang = 'en-US') => {
         if (!speechSupported) {
@@ -217,7 +243,11 @@ const PracticeScreen = () => {
                                                 <div className="english-text">
                                                     <span className="language-indicator">🇺🇸</span>
                                                     <div className="sentence-content">
-                                                        <p>{sentence.english}</p>
+                                                        <TranslatableText 
+                                                            text={sentence.english}
+                                                            translations={translations}
+                                                            isEnglish={true}
+                                                        />
                                                         <button
                                                             className="play-button"
                                                             onClick={() => handlePlayAudio(index)}
@@ -233,7 +263,10 @@ const PracticeScreen = () => {
                                                 <div className="spanish-text">
                                                     <span className="language-indicator">🇪🇸</span>
                                                     <div className="sentence-content">
-                                                        <p>{sentence.spanish}</p>
+                                                        <TranslatableText 
+                                                            text={sentence.spanish}
+                                                            translations={translations}
+                                                        />
                                                         <button
                                                             className="play-button"
                                                             onClick={() => handlePlayAudio(index, true)}
