@@ -227,3 +227,36 @@ If you see the red warning banner:
 2. Verify `ENABLE_OPENAI_TTS=true` in `.env`
 3. Restart the server
 4. Clear browser cache and refresh
+
+## Word Meaning Hover Feature
+
+The application includes an interactive word translation feature that helps users understand English text:
+
+### How to Use
+
+1. Hold the Alt key (or Command key on Mac) to activate the meaning mode
+2. Hover over any English word to see:
+   - The word itself
+   - Its Spanish translation
+   - A detailed explanation in Spanish
+
+### Features
+
+- Works only on English text sections
+- Activates only with clean Alt/Command press (no other modifier keys)
+- Shows contextual explanations for better understanding
+- Displays tooltips that stay above all other content
+
+### Technical Notes
+
+- Translations are managed through a centralized translation service
+- Tooltips are positioned dynamically based on viewport space
+- The feature is automatically disabled for Spanish text sections
+- Uses styled-components for consistent styling
+
+### Keyboard Support
+
+- Alt key (Windows/Linux)
+- Command key (MacOS)
+- Feature disables automatically when key is released
+- Prevents activation with modifier key combinations (Shift+Alt, Ctrl+Alt, etc.)
